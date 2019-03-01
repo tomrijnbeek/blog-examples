@@ -18,6 +18,8 @@ namespace TomRijnbeek.OpenAL.Simple {
 
                 var source = AL.GenSource();
                 AL.SourceQueueBuffers(source, buffers.Length, buffers);
+                
+                AL.Source(source, ALSourceb.Looping, true);
 
                 Console.WriteLine("Press button to play sound");
                 Console.ReadKey();
@@ -26,6 +28,9 @@ namespace TomRijnbeek.OpenAL.Simple {
                 
                 Console.WriteLine("Sound playing. Press button to exit");
                 Console.ReadKey();
+                
+                AL.DeleteSource(source);
+                AL.DeleteBuffers(buffers);
             }
         }
     }
